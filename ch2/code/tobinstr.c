@@ -3,7 +3,7 @@
 int main() {
     int n = 0xaecdef12;
 
-    for(int i=sizeof(i)*8-1;i>-1;i--) {
+    for(int i=sizeof(n)*8-1;i>-1;i--) {
         unsigned char ch = ((n >> i) & 0x01) == 0 ? '0' : '1';
         printf("%c",ch);
     }

@@ -6,7 +6,7 @@ int main() {
     
     unsigned int f2i = *((unsigned int *)(&f));
 
-    //大端模式
+    //小端模式
     for(int i=0;i<sizeof(f2i);i++) {
         bytes[i] = (f2i >> i*8) & 0xff;
         printf("[%d] is 0x%x\n",i,bytes[i]);
