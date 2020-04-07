@@ -88,5 +88,5 @@ int IsEmpty(void) {
 }
 
 int IsFully(void) {
-    return ((q+1)& (SIZE-1)) ==q;
+    return ((q+1)& (SIZE-1)) ==p;
 }
