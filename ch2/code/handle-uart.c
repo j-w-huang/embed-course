@@ -1,5 +1,8 @@
 /*
- * 1. 写一个循环队列
+ * 1. 写一个循环队列，实现入队，出队，队空，队满操作
+ * 2. 写一个串口处理函数
+ * 3. 写一个串口处理回调，是处理函数的参数
+ * 4. 模拟入队，出队过程
  */
 #include <stdio.h>
 #define U16 unsigned short
@@ -14,6 +17,9 @@ int p,q; // p: 队头，q:队尾
 
 void Push(U16 data);
 void Pop(U16* recvBuf, U16 size);
+int GetLen(void);
+int IsEmpty(void);
+int IsFully(void);
 
 int main () {
 
@@ -34,7 +40,7 @@ int main () {
 
     // for主循环..
     for(int i=0;i<100;i++) {
-        if(((q-p+1) & (SIZE-1)) >= 16) {
+        if(((q-p+SIZE) & (SIZE-1)) >= 16) {
             //出队列
             Pop(recvData,16);
         }
@@ -64,10 +70,23 @@ void Push(U16 data) {
      printf("push: %d\r\n",data);
 }
 
+// 循环队列出队
 void Pop(U16* recvBuf, U16 size) {
     for(int i=0;i<size;i++) {
         recvBuf[i] = buf[p++];
         p &= (SIZE - 1);
         printf("pop: %d\r\n",recvBuf[i]);
     }
+}
+
+int GetLen(void) {
+    return ((q-p+SIZE) & (SIZE-1));
+}
+
+int IsEmpty(void) {
+    return p==q;
+}
+
+int IsFully(void) {
+    return ((q+1)& (SIZE-1)) ==q;
 }
