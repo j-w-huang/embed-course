@@ -8,7 +8,7 @@
 #define U16 unsigned short
 #define SIZE (int)(1<<5)
 
-typedef void (*callback)(U16 data);
+typedef void (*callback)(U16);
 void defCallback(U16 data);
 void transData(U16 data, callback cb);
 
@@ -43,6 +43,9 @@ int main () {
         if(((q-p+SIZE) & (SIZE-1)) >= 16) {
             //出队列
             Pop(recvData,16);
+            // Send(recvData,16);
+            // Draw(recvData,16);
+            printf("\r\n");
         }
     }
     //    
@@ -75,7 +78,7 @@ void Pop(U16* recvBuf, U16 size) {
     for(int i=0;i<size;i++) {
         recvBuf[i] = buf[p++];
         p &= (SIZE - 1);
-        printf("pop: %d\r\n",recvBuf[i]);
+        printf("%d ",recvBuf[i]);
     }
 }
 
