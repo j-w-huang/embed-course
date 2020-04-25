@@ -1,0 +1,12 @@
+//早期做根文件系统，用精简的命令集合
+1.busybox
+
+// 后来用，配置复杂
+2.buildroot
+
+// 现在主流...自己构建一个Linux发行版....
+3. Yocto
+
+
+// 装虚拟机Qemu,自己构建虚拟CPU Linux
+Qemu uboot kenerl 根文件系统， vexpress-a9
